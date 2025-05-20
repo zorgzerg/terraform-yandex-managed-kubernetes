@@ -127,6 +127,8 @@ resource "yandex_kubernetes_node_group" "node_groups" {
     platform_id = lookup(each.value, "platform_id", null)
     metadata    = merge(local.common_ssh_keys_metadata, lookup(each.value, "metadata", {}))
 
+    name = lookup(each.value, "use_default_name", true) ? null : join("-", [each.key, "{instance.short_id}"])
+
     resources {
       cores         = lookup(each.value, "cores", 2)
       core_fraction = lookup(each.value, "core_fraction", 100)
