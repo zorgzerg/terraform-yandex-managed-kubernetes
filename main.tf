@@ -112,6 +112,10 @@ resource "yandex_kubernetes_cluster" "cluster" {
   // to keep permissions of service account on destroy
   // until cluster will be destroyed
   depends_on = [yandex_resourcemanager_folder_iam_member.service_account]
+
+  lifecycle {
+    ignore_changes = [ master[0].master_location ]
+  }
 }
 
 resource "yandex_kubernetes_node_group" "node_groups" {
