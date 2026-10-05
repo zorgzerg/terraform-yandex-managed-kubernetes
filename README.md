@@ -93,6 +93,7 @@ module "kubernetes" {
 | master\_auto\_upgrade            | Boolean flag that specifies if master can be upgraded automatically.                                                                                                                                                                                                                                                                                              | `bool`                                                                          | `true`     |    no    |
 | master\_locations                | List of locations where cluster will be created. If list contains only one<br>location, will be created zonal cluster, if more than one -- regional.                                                                                                                                                                                                              | <pre>list(object({<br>  zone = string<br>  subnet_id = string<br>}))</pre>      | n/a        |   yes    |
 | master\_maintenance\_windows     | List of structures that specifies maintenance windows, when auto update for master is allowed.                                                                                                                                                                                                                                                                    | `list(map(string))`                                                             | `[]`       |    no    |
+| master\_min\_resource\_preset\_id | Minimum resource preset ID for the Kubernetes master.                                                                                                                                                                                                                                                                                                           | `string`                                                                        | `null`     |    no    |
 | master\_public\_ip               | Boolean flag. When true, Kubernetes master will have visible ipv4 address.                                                                                                                                                                                                                                                                                        | `bool`                                                                          | `true`     |    no    |
 | master\_security\_group\_ids     | List of security group IDs to which the Kubernetes cluster belongs.                                                                                                                                                                                                                                                                                               | `set(string)`                                                                   | `null`     |    no    |
 | master\_region                   | Name of region where cluster will be created. Required for regional cluster,<br>not used for zonal cluster.                                                                                                                                                                                                                                                       | `string`                                                                        | `null`     |    no    |
@@ -164,10 +165,10 @@ value is a map of node group attributes.
 | Name      | Version    |
 |-----------|------------|
 | terraform | > = 0.13.0 |
-| yandex    | > = 0.105.0   |
+| yandex    | > = 0.235.0   |
 
 ## Providers
 
 | Name   | Version    |
 |--------|------------|
-| yandex | > = 0.105.0   |
+| yandex | > = 0.235.0   |
