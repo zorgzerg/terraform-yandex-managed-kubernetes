@@ -94,6 +94,16 @@ resource "yandex_kubernetes_cluster" "cluster" {
       }
     }
 
+    dynamic "scale_policy" {
+      for_each = var.master_min_resource_preset_id == null ? [] : [var.master_min_resource_preset_id]
+
+      content {
+        auto_scale {
+          min_resource_preset_id = scale_policy.value
+        }
+      }
+    }
+
     maintenance_policy {
       auto_upgrade = var.master_auto_upgrade
 
@@ -114,7 +124,7 @@ resource "yandex_kubernetes_cluster" "cluster" {
   depends_on = [yandex_resourcemanager_folder_iam_member.service_account]
 
   lifecycle {
-    ignore_changes = [ master[0].master_location ]
+    ignore_changes = [master[0].master_location]
   }
 }
 

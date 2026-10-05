@@ -180,6 +180,14 @@ variable "master_security_group_ids" {
   default = null
 }
 
+variable "master_min_resource_preset_id" {
+  description = "Minimum resource preset ID for the Kubernetes master."
+
+  type = string
+
+  default = null
+}
+
 variable "master_region" {
   description = <<-EOF
   Name of region where cluster will be created. Required for regional cluster,

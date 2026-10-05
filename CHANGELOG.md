@@ -1,3 +1,13 @@
+## 2.6.0 (October 5, 2026)
+
+ENHANCEMENTS:
+
+* Added `master_min_resource_preset_id` cluster attribute.
+
+NOTES:
+
+* Required provider yandex >= 0.235.0
+
 ## 2.3.0 (January 18, 2024)
 
 NOTES:
